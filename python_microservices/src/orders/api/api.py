@@ -1,6 +1,7 @@
 import time
 import uuid
 from datetime import datetime
+from typing import Optional
 from uuid import UUID
 
 from fastapi import HTTPException
@@ -18,7 +19,7 @@ ORDERS = []
 
 
 @app.get('/orders', response_model=GetOrdersSchema)                                           
-def get_orders():
+def get_orders(cancelled: Optional[bool] = None, limit: Optional[int] = None):
     return ORDERS
 
 
